@@ -53,6 +53,8 @@
   </div>
 
   <script>
+    handsymbole = ["✊", "✋", "✌️"];
+    let userScore = 0;
     // Access the webcam and display the feed
     const video = document.getElementById('video');
     
@@ -71,12 +73,14 @@
       // Here, you would integrate your AI model for gesture recognition.
       // For now, we simulate a result with a timeout.
       setTimeout(() => {
-        document.getElementById('result').innerText = "Gesture Recognized: A";
+        document.getElementById('result').innerText = handsymbole[userScore];
+        userScore++;
         // Replace "A" with the actual recognized gesture.
       }, 3000); // Simulate a 3-second recognition delay
     }
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
