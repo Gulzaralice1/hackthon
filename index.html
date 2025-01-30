@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sign Language Translator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #FEFAE0;
+      color: #626F47;
+      font-family: 'Arial', sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin-top: 50px;
+    }
+    .card {
+      background-color: #F2EED7;
+      border: 1px solid #798645;
+    }
+    #camera-feed {
+      width: 100%;
+      height: 400px;
+      background-color: #ddd;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">AI Sign Language Translator</h1>
+    
+    <div class="card">
+      <div class="card-body">
+        <div id="camera-feed" class="mb-3">
+          <!-- Video feed will be displayed here -->
+          <video id="video" width="100%" height="100%" autoplay></video>
+        </div>
+        
+        <button class="btn btn-success btn-lg" onclick="startRecognition()">Start Recognition</button>
+
+        <div id="result" class="text-center mt-4">
+          <!-- Result will be displayed here -->
+          Waiting for gesture...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Access the webcam and display the feed
+    const video = document.getElementById('video');
+    
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(error => {
+        console.log("Error accessing the webcam: ", error);
+      });
+
+    // Start gesture recognition (this is a placeholder function)
+    function startRecognition() {
+      document.getElementById('result').innerText = "Recognizing...";
+
+      // Here, you would integrate your AI model for gesture recognition.
+      // For now, we simulate a result with a timeout.
+      setTimeout(() => {
+        document.getElementById('result').innerText = "Gesture Recognized: A";
+        // Replace "A" with the actual recognized gesture.
+      }, 3000); // Simulate a 3-second recognition delay
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
